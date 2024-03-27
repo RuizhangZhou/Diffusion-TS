@@ -87,10 +87,15 @@ def main():
     else:
         trainer.load(args.milestone)
         dataset = dataloader_info['dataset']
-        samples = trainer.sample(num=len(dataset), size_every=2001, shape=[dataset.window, dataset.var_num])
+        samples = trainer.sample(num=len(dataset), size_every=2001, shape=[dataset.window, dataset.var_num])#size_every=2001是为什么
         if dataset.auto_norm:
             samples = unnormalize_to_zero_to_one(samples)
-            np.save(os.path.join(args.save_dir, f'ddpm_fake_{args.name}.npy'), samples)
+        np.save(os.path.join(args.save_dir, f'ddpm_fake_{args.name}.npy'), samples)
 
 if __name__ == '__main__':
     main()
+
+
+
+#nohup python main.py --name inD_multi_18-29 --config_file /home/rzhou/Projects/Diffusion-TS/Config/inD_multi.yaml --gpu 3 --train
+#python main.py --name inD_multi_18-29 --config_file /home/rzhou/Projects/Diffusion-TS/Config/inD_multi.yaml --gpu 3 --sample 0 --milestone 2

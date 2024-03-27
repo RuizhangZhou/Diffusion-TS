@@ -1,0 +1,6 @@
+2024-03-27-10-37: {'overall': {'trainable': '396.02K', 'non_trainable': '0', 'total': '396.02K'}, 'model': {'trainable': '396.02K', 'non_trainable': '0', 'total': '396.02K'}}
+2024-03-27-10-37: inD_multi_18-29: start training...
+2024-03-27-10-51: Training done, time: 828.46
+2024-03-27-11-17: {'overall': {'trainable': '396.02K', 'non_trainable': '0', 'total': '396.02K'}, 'model': {'trainable': '396.02K', 'non_trainable': '0', 'total': '396.02K'}}
+2024-03-27-11-17: Begin to sample...
+2024-03-27-11-17: Sampling done, time: 50.28

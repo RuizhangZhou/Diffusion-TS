@@ -1,0 +1,40 @@
+==> torch version: 2.2.1
+==> cudnn version: 8902
+==> Cmd:
+['main.py', '--name', 'inD_multi_18-29', '--config_file', '/home/rzhou/Projects/Diffusion-TS/Config/inD_multi.yaml', '--gpu', '3', '--train']
+==> args:
+  config_file: /home/rzhou/Projects/Diffusion-TS/Config/inD_multi.yaml
+  cudnn_deterministic: False
+  gpu: 3
+  milestone: 10
+  missing_ratio: 0.0
+  mode: infill
+  name: inD_multi_18-29
+  opts: []
+  output: OUTPUT
+  pred_len: 0
+  sample: 0
+  save_dir: OUTPUT/inD_multi_18-29
+  seed: 12345
+  tensorboard: False
+  train: True
+==> torch version: 2.2.1
+==> cudnn version: 8902
+==> Cmd:
+['main.py', '--name', 'inD_multi_18-29', '--config_file', '/home/rzhou/Projects/Diffusion-TS/Config/inD_multi.yaml', '--gpu', '3', '--sample', '0', '--milestone', '10']
+==> args:
+  config_file: /home/rzhou/Projects/Diffusion-TS/Config/inD_multi.yaml
+  cudnn_deterministic: False
+  gpu: 3
+  milestone: 10
+  missing_ratio: 0.0
+  mode: infill
+  name: inD_multi_18-29
+  opts: []
+  output: OUTPUT
+  pred_len: 0
+  sample: 0
+  save_dir: OUTPUT/inD_multi_18-29
+  seed: 12345
+  tensorboard: False
+  train: False
