@@ -173,7 +173,7 @@ class IkaDataset(Dataset):
         self, 
         name,
         data_root, 
-        window=100, 
+        window=250, 
         proportion=0.8, 
         save2npy=True, 
         neg_one_to_one=True,

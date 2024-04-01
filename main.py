@@ -30,6 +30,10 @@ def parse_args():
     parser.add_argument('--gpu', type=int, default=None,
                         help='GPU id to use. If given, only the specific gpu will be'
                         ' used, and ddp will be disabled')
+    # parser.add_argument('--gpus', nargs='+', type=int, default=None,
+    #                 help='List of GPU ids to use. If given, only the specific GPUs will be'
+    #                 ' used, and DataParallel will be enabled')
+
     
     # args for training
     parser.add_argument('--train', action='store_true', default=False, help='Train or Test.')
@@ -37,7 +41,7 @@ def parse_args():
                         choices=[0, 1], help='Condition or Uncondition.')
     parser.add_argument('--mode', type=str, default='infill',
                         help='Infilling or Forecasting.')
-    parser.add_argument('--milestone', type=int, default=10)
+    parser.add_argument('--milestone', type=int, default=None, help='Milestone step to load before continuing training or for sampling.')
 
     parser.add_argument('--missing_ratio', type=float, default=0., help='Ratio of Missing Values.')
     parser.add_argument('--pred_len', type=int, default=0, help='Length of Predictions.')
@@ -65,17 +69,20 @@ def main():
 
     logger = Logger(args)
     logger.save_config(config)
-
     model = instantiate_from_config(config['model']).cuda()
+
     if args.sample == 1 and args.mode in ['infill', 'predict']:
         test_dataloader_info = build_dataloader_cond(config, args)
     dataloader_info = build_dataloader(config, args)
     trainer = Trainer(config=config, args=args, model=model, dataloader=dataloader_info, logger=logger)
 
+    
+    if args.milestone is not None:
+            trainer.load(args.milestone)
+            
     if args.train:
         trainer.train()
     elif args.sample == 1 and args.mode in ['infill', 'predict']:
-        trainer.load(args.milestone)
         dataloader, dataset = test_dataloader_info['dataloader'], test_dataloader_info['dataset']
         coef = config['dataloader']['test_dataset']['coefficient']
         stepsize = config['dataloader']['test_dataset']['step_size']
@@ -85,9 +92,8 @@ def main():
             samples = unnormalize_to_zero_to_one(samples)
             np.save(os.path.join(args.save_dir, f'ddpm_{args.mode}_{args.name}.npy'), samples)
     else:
-        trainer.load(args.milestone)
         dataset = dataloader_info['dataset']
-        samples = trainer.sample(num=len(dataset), size_every=2001, shape=[dataset.window, dataset.var_num])#size_every=2001是为什么
+        samples = trainer.sample(num=len(dataset), size_every=500, shape=[dataset.window, dataset.var_num])#size_every=2001是为什么
         if dataset.auto_norm:
             samples = unnormalize_to_zero_to_one(samples)
         np.save(os.path.join(args.save_dir, f'ddpm_fake_{args.name}.npy'), samples)
@@ -97,5 +103,5 @@ if __name__ == '__main__':
 
 
 
-#nohup python main.py --name inD_multi_18-29 --config_file /home/rzhou/Projects/Diffusion-TS/Config/inD_multi.yaml --gpu 3 --train
-#python main.py --name inD_multi_18-29 --config_file /home/rzhou/Projects/Diffusion-TS/Config/inD_multi.yaml --gpu 3 --sample 0 --milestone 2
+#nohup python main.py --name rounD_map02-08_interval100_seq1000_reduced_nfea100 --config_file /home/rzhou/Projects/Diffusion-TS/Config/ika_multi.yaml --gpu 2 --train >> /home/rzhou/Projects/scenariogenerationai/data_process_diffts/log/dataprocess_improved.log 2>&1
+#nohup python main.py --name rounD_map02-08_interval100_seq1000_reduced_nfea100 --config_file /home/rzhou/Projects/Diffusion-TS/Config/ika_multi.yaml --gpu 3 --sample 0 --milestone 10

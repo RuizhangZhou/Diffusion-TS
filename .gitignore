@@ -1,4 +1,7 @@
 
 */__pycache__/
-Models/interpretable_diffusion/__pycache__/
+*.pyc
 /Data/datasets/
+Checkpoints/
+OUTPUT/
+*.mp4
