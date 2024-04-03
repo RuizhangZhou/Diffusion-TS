@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 from scipy import io
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler,QuantileTransformer
 from torch.utils.data import Dataset
 from Models.interpretable_diffusion.model_utils import normalize_to_neg_one_to_one, unnormalize_to_zero_to_one
 from Utils.masking_utils import noise_mask
@@ -302,10 +302,16 @@ class IkaDataset(Dataset):
 
     @staticmethod
     def read_data(filepath):
-        """Reads a single .csv
+        """Reads a single.csv
         """
         df = pd.read_csv(filepath, header=0)
         data = df.values
+    
+        # # 定义一个极端的填充值
+        # extreme_value = -300
+        # # 替换所有为0的值
+        # data[data == 0] = extreme_value
+
         scaler = MinMaxScaler()
         scaler = scaler.fit(data[:,1:])
         return data, scaler

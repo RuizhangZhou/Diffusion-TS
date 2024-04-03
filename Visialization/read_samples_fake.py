@@ -8,18 +8,18 @@ import random
 from PIL import Image
 
 # fake_data_file.npy
-file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/inD_map19_interval100_seq1000_reduced_nfea40/ddpm_fake_inD_map19_interval100_seq1000_reduced_nfea40.npy'
+file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map02-08_interval100_seq500_reduced_nfea30/ddpm_fake_rounD_map02-08_interval100_seq500_reduced_nfea30.npy'
 
 # 使用numpy的load函数读取npy文件
 fake_data_norm = np.load(file_path)
 
 
-df = pd.read_csv("/DATA1/rzhou/ika/multi_testcases/inD/reduced/inD_map19_interval100_seq1000_reduced_nfea40.csv", header=0)
+df = pd.read_csv("/DATA1/rzhou/ika/multi_testcases/rounD/reduced/nfea30/rounD_map02-08_interval100_seq500_reduced_nfea30.csv", header=0)
 data = df.values
 scaler = MinMaxScaler()
 scaler = scaler.fit(data[:,1:])
-seq_length=1000
-num_feature=40
+seq_length=500
+num_feature=30
 fake_data=scaler.inverse_transform(fake_data_norm.reshape(-1, num_feature)).reshape(-1, seq_length, num_feature)
 
 # 将所有绝对值小于10的元素替换为0
@@ -36,11 +36,11 @@ num_cases=5
 random_indices = np.random.choice(fake_data.shape[0], num_cases, replace=False)
 print(f"Random indices: {random_indices}")
 
-num_v=20
+num_v=15
 
 # 载入背景图片
-#bg_image_path = '/DATA1/rzhou/ika/rounD/data/02_background.png'
-bg_image_path = '/DATA1/rzhou/ika/inD/data/19_background.png'
+bg_image_path = '/DATA1/rzhou/ika/rounD/data/02_background.png'
+#bg_image_path = '/DATA1/rzhou/ika/inD/data/19_background.png'
 bg_img = Image.open(bg_image_path)
 # 获取图像的宽度和高度
 width, height = bg_img.size
@@ -57,14 +57,14 @@ for random_index in random_indices:
     fig, ax = plt.subplots(figsize=figsize)
     bg_img = plt.imread(bg_image_path)
     # inD-19
-    ax.set_xlim(0, 80)
-    ax.set_ylim(-60, 0)
-    ax.imshow(bg_img, extent=[0, 117, -78, 0])
+    # ax.set_xlim(0, 80)
+    # ax.set_ylim(-60, 0)
+    # ax.imshow(bg_img, extent=[0, 117, -78, 0])
 
     # rounD-02
-    # ax.set_xlim(0, 170)
-    # ax.set_ylim(-95, 0)
-    # ax.imshow(bg_img, extent=[0, 170, -95, 0])
+    ax.set_xlim(0, 170)
+    ax.set_ylim(-95, 0)
+    ax.imshow(bg_img, extent=[0, 170, -95, 0])
 
     lines = [ax.plot([], [], marker='o', linestyle='', color=colors[i])[0] for i in range(num_v)]
 
@@ -81,10 +81,10 @@ for random_index in random_indices:
             if x == 0 and y == 0:
                 line.set_data([], [])
             else:
-                line.set_data(x, y)
+                line.set_data([x], [y])
         return lines
 
-    anim = FuncAnimation(fig, animate, init_func=init, frames=1000, interval=40, blit=True)
+    anim = FuncAnimation(fig, animate, init_func=init, frames=500, interval=40, blit=True)
 
     #plt.legend([f"Point {i+1}" for i in range(num_v)], loc='upper right', fontsize='small')
     # 在每个动画循环的末尾，但在保存动画之前，添加图例
@@ -94,5 +94,5 @@ for random_index in random_indices:
     # 保存动画为MP4
     Writer = animation.writers['ffmpeg']
     writer = Writer(fps=25, metadata=dict(artist='Me'), bitrate=1800)
-    anim.save(f'/home/rzhou/Projects/Diffusion-TS/OUTPUT/inD_map19_interval100_seq1000_reduced_nfea40/animations/{random_index}.mp4', writer=writer)
+    anim.save(f'/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map02-08_interval100_seq500_reduced_nfea30/animations/{random_index}.mp4', writer=writer)
     plt.close(fig)  # 关闭当前绘图窗口，防止过多图形打开
