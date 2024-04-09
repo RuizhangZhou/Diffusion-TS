@@ -102,6 +102,5 @@ if __name__ == '__main__':
     main()
 
 
-
 #nohup python main.py --name rounD_map02-08_interval100_seq1000_reduced_nfea100 --config_file /home/rzhou/Projects/Diffusion-TS/Config/ika_multi.yaml --gpu 2 --train >> /home/rzhou/Projects/scenariogenerationai/data_process_diffts/log/dataprocess_improved.log 2>&1
 #nohup python main.py --name rounD_map02-08_interval100_seq1000_reduced_nfea100 --config_file /home/rzhou/Projects/Diffusion-TS/Config/ika_multi.yaml --gpu 3 --sample 0 --milestone 10

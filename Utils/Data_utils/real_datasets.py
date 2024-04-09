@@ -306,12 +306,10 @@ class IkaDataset(Dataset):
         """
         df = pd.read_csv(filepath, header=0)
         data = df.values
-    
-        # # 定义一个极端的填充值
-        # extreme_value = -300
-        # # 替换所有为0的值
-        # data[data == 0] = extreme_value
-
+        # 定义一个极端的填充值
+        extreme_value = -300
+        # 替换所有为0的值
+        data[data == 0] = extreme_value
         scaler = MinMaxScaler()
         scaler = scaler.fit(data[:,1:])
         return data, scaler
