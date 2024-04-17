@@ -1,8 +1,8 @@
 model:
   target: Models.interpretable_diffusion.gaussian_diffusion.Diffusion_TS
   params:
-    seq_length: 500 #要改
-    feature_size: 10 #要改
+    seq_length: 250 #要改
+    feature_size: 2 #要改
     n_layer_enc: 3
     n_layer_dec: 2
     d_model: 96  # 4 X 16, 这个是啥?好像是n_embedding
@@ -19,10 +19,10 @@ model:
 
 solver:
   base_lr: 1.0e-5
-  max_epochs: 30000
-  results_folder: ./Checkpoints/cps_rounD_map01_interval1_seq500_nfea10_pad-300
+  max_epochs: 20000
+  results_folder: ./Checkpoints/cps_rounD_single_09-23_seq250
   gradient_accumulate_every: 2
-  save_cycle: 3000  # max_epochs // 10
+  save_cycle: 2000  # max_epochs // 10
   ema:
     decay: 0.995
     update_interval: 10
@@ -43,10 +43,10 @@ dataloader:
   train_dataset:
     target: Utils.Data_utils.real_datasets.IkaDataset
     params:
-      name: rounD_map01_interval1_seq500_nfea10_pad-300
+      name: rounD_single_09-23_seq250
       proportion: 1.0  # Set to rate < 1 if training conditional generation
-      data_root: /DATA1/rzhou/ika/multi_testcases/rounD/ori/seq500/00-01/rounD_map01_interval1_seq500_nfea10.csv
-      window: 500  # seq_length 要改
+      data_root: /DATA1/rzhou/ika/single_testcases/rounD/rounD_single_09-23_seq250.csv
+      window: 250  # seq_length 要改
       save2npy: True
       neg_one_to_one: True
       seed: 123
@@ -55,10 +55,10 @@ dataloader:
   test_dataset:
     target: Utils.Data_utils.real_datasets.IkaDataset
     params:
-      name: rounD_map01_interval1_seq500_nfea10_pad-300
+      name: rounD_single_09-23_seq250
       proportion: 0.9  # rate
-      data_root: /DATA1/rzhou/ika/multi_testcases/rounD/ori/seq500/00-01/rounD_map01_interval1_seq500_nfea10.csv
-      window: 500  # seq_length 要改
+      data_root: /DATA1/rzhou/ika/single_testcases/rounD/rounD_single_09-23_seq250.csv
+      window: 250  # seq_length 要改
       save2npy: True
       neg_one_to_one: True
       seed: 123

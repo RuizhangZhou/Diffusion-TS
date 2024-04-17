@@ -6,12 +6,13 @@ from matplotlib.animation import FuncAnimation
 import matplotlib.animation as animation
 import random
 from PIL import Image
+import os
 
 # fake_data_file.npy
-file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map01_interval1_seq500_nfea10_pad-300/ddpm_fake_rounD_map01_interval1_seq500_nfea10_pad-300.npy'
+file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map09-23_interval10_seq500_nfea10_padreal/ddpm_fake_rounD_map09-23_interval10_seq500_nfea10_padreal.npy'
 fake_data_norm = np.load(file_path)
 
-df = pd.read_csv("/DATA1/rzhou/ika/multi_testcases/rounD/ori/seq500/00-01/rounD_map01_interval1_seq500_nfea10.csv", header=0)
+df = pd.read_csv("/DATA1/rzhou/ika/multi_testcases/rounD/ori/seq500/09-23/int10/rounD_map09-23_interval10_seq500_nfea10_padreal.csv", header=0)
 data = df.values
 
 # 定义一个极端的填充值
@@ -34,7 +35,7 @@ print(f"Random indices: {random_indices}")
 
 num_v=num_feature//2
 Dtype="rounD"#要改
-index_map=1#要改
+index_map=9#要改
 bg_image_path = f'/DATA1/rzhou/ika/{Dtype}/data/{index_map:02d}_background.png'
 bg_img = Image.open(bg_image_path)
 width, height = bg_img.size
@@ -44,6 +45,7 @@ colors = plt.cm.jet(np.linspace(0, 1, num_v))
 # 读取CSV文件
 df_recordingMeta = pd.read_csv(f"/DATA1/rzhou/ika/{Dtype}/data/{index_map:02d}_recordingMeta.csv")
 # 读取最后一列"orthoPxToMeter"的值
+# ortho_px_to_meter = 0.01
 ortho_px_to_meter = df_recordingMeta["orthoPxToMeter"].iloc[0]
 
 
@@ -86,12 +88,12 @@ for random_index in random_indices:
 
     Writer = animation.writers['ffmpeg']
     writer = Writer(fps=25, metadata=dict(artist='Me'), bitrate=1800)
-    animPath = f'/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map01_interval1_seq500_nfea10_pad-300/animations/{random_index}.mp4'
+    animPath = f'/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map09-23_interval10_seq500_nfea10_padreal/animations/{random_index}.mp4'
     checkDir(os.path.dirname(animPath))
     anim.save(animPath, writer=writer)
     
     # Save the trajectory image
-    pltPath=f'/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map01_interval1_seq500_nfea10_pad-300/fig/{random_index}_trajectory.png'
+    pltPath=f'/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map09-23_interval10_seq500_nfea10_padreal/fig/{random_index}_trajectory.png'
     checkDir(os.path.dirname(pltPath))
     plt.savefig(pltPath)
     plt.close(fig)  # 关闭当前绘图窗口，防止过多图形打开

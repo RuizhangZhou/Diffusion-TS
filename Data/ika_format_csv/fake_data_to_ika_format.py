@@ -5,12 +5,12 @@ import random
 import os
 
 Dtype="rounD"
-index_map=1
+index_map=0
 # fake_data_file.npy
-file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map01_interval1_seq500_nfea10_pad-300/ddpm_fake_rounD_map01_interval1_seq500_nfea10_pad-300.npy'
+file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map00_interval1_seq500_nfea10_pad-300/ddpm_fake_rounD_map00_interval1_seq500_nfea10_pad-300.npy'
 fake_data_norm = np.load(file_path)
 
-df = pd.read_csv("/DATA1/rzhou/ika/multi_testcases/rounD/ori/seq500/00-01/rounD_map01_interval1_seq500_nfea10.csv", header=0)
+df = pd.read_csv("/DATA1/rzhou/ika/multi_testcases/rounD/ori/seq500/00-01/rounD_map00_interval1_seq500_nfea10.csv", header=0)
 data = df.values
 
 # 定义一个极端的填充值
@@ -26,7 +26,7 @@ fake_data=scaler.inverse_transform(fake_data_norm.reshape(-1, num_feature)).resh
 
 fake_data[fake_data < -200] = 0
 
-fake_index = 689
+fake_index = 2705
 # 假设data是已经加载的数据
 cur_fake_data=fake_data[fake_index]
 n, n_features = cur_fake_data.shape
@@ -78,7 +78,7 @@ for track_id in range(n_features // 2):
         'numFrames': final_frame - initial_frame + 1,
         'width': 2,
         'length': 4,
-        'class': 'car'
+        'class': 'bicycle'
     }
     tracks_meta_df = pd.concat([tracks_meta_df, pd.DataFrame([track_meta])], ignore_index=True)
 
@@ -86,6 +86,19 @@ for track_id in range(n_features // 2):
     for frame in range(initial_frame, final_frame + 1):
         x_velocity = (x_column[min(frame + 1, final_frame)] - x_column[frame]) / delta_time
         y_velocity = (y_column[min(frame + 1, final_frame)] - y_column[frame]) / delta_time
+        
+        # 计算heading
+        if frame < final_frame:
+            dx = x_column[frame + 1] - x_column[frame]
+            dy = y_column[frame + 1] - y_column[frame]
+        else:
+            # 如果是最后一帧，无法用下一帧来计算，使用前一帧的dx, dy
+            dx = x_column[frame] - x_column[frame - 1]
+            dy = y_column[frame] - y_column[frame - 1]
+            
+        angle_rad = np.arctan2(dy, dx)
+        calculated_heading = np.degrees(angle_rad)
+        heading = (90 - calculated_heading) % 360
 
         track_data = {
             'recordingId': recordingId,
@@ -94,7 +107,7 @@ for track_id in range(n_features // 2):
             'trackLifetime': frame - initial_frame,
             'xCenter': x_column[frame],
             'yCenter': y_column[frame],
-            'heading': 100,
+            'heading': heading,
             'width': 2,
             'length': 4,
             'xVelocity': x_velocity,
