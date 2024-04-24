@@ -1,0 +1,165 @@
+Using device: cuda:3
+Inception Score for batch 0: 1.000301718711853
+Inception Score for batch 1: 1.0003142356872559
+Inception Score for batch 2: 1.0002868175506592
+Inception Score for batch 3: 1.0003268718719482
+Inception Score for batch 4: 1.0002912282943726
+Inception Score for batch 5: 1.0003198385238647
+Inception Score for batch 6: 1.0003007650375366
+Inception Score for batch 7: 1.0003187656402588
+Inception Score for batch 8: 1.000301480293274
+Inception Score for batch 9: 1.0003377199172974
+Inception Score for batch 10: 1.0003079175949097
+Inception Score for batch 11: 1.0003271102905273
+Inception Score for batch 12: 1.000296950340271
+Inception Score for batch 13: 1.0003130435943604
+Inception Score for batch 14: 1.0003224611282349
+Inception Score for batch 15: 1.0002808570861816
+Inception Score for batch 16: 1.000315546989441
+Inception Score for batch 17: 1.000290870666504
+Inception Score for batch 18: 1.0002883672714233
+Inception Score for batch 19: 1.0002814531326294
+Inception Score for batch 20: 1.0003395080566406
+Inception Score for batch 21: 1.0003211498260498
+Inception Score for batch 22: 1.0003198385238647
+Inception Score for batch 23: 1.000314712524414
+Inception Score for batch 24: 1.000283122062683
+Inception Score for batch 25: 1.000303030014038
+Inception Score for batch 26: 1.0002920627593994
+Inception Score for batch 27: 1.0002866983413696
+Inception Score for batch 28: 1.0003091096878052
+Inception Score for batch 29: 1.0002894401550293
+Inception Score for batch 30: 1.0002912282943726
+Inception Score for batch 31: 1.0003087520599365
+Inception Score for batch 32: 1.0003056526184082
+Inception Score for batch 33: 1.0003294944763184
+Inception Score for batch 34: 1.0002925395965576
+Inception Score for batch 35: 1.0002591609954834
+Inception Score for batch 36: 1.000278353691101
+Inception Score for batch 37: 1.0003236532211304
+Inception Score for batch 38: 1.0002965927124023
+Inception Score for batch 39: 1.0002931356430054
+Inception Score for batch 40: 1.0003103017807007
+Inception Score for batch 41: 1.0002875328063965
+Inception Score for batch 42: 1.0003280639648438
+Inception Score for batch 43: 1.0003018379211426
+Inception Score for batch 44: 1.0002877712249756
+Inception Score for batch 45: 1.0003079175949097
+Inception Score for batch 46: 1.000294804573059
+Inception Score for batch 47: 1.000313401222229
+Inception Score for batch 48: 1.0003118515014648
+Inception Score for batch 49: 1.0002893209457397
+Inception Score for batch 50: 1.0003002882003784
+Inception Score for batch 51: 1.000322699546814
+Inception Score for batch 52: 1.0002942085266113
+Inception Score for batch 53: 1.0003193616867065
+Inception Score for batch 54: 1.0002937316894531
+Inception Score for batch 55: 1.0003104209899902
+Inception Score for batch 56: 1.000298261642456
+Inception Score for batch 57: 1.0003007650375366
+Inception Score for batch 58: 1.0003182888031006
+Inception Score for batch 59: 1.0003033876419067
+Inception Score for batch 60: 1.0003105401992798
+Inception Score for batch 61: 1.0003188848495483
+Inception Score for batch 62: 1.0002998113632202
+Inception Score for batch 63: 1.0003058910369873
+Inception Score for batch 64: 1.0002830028533936
+Inception Score for batch 65: 1.0003235340118408
+Inception Score for batch 66: 1.0003098249435425
+Inception Score for batch 67: 1.0002979040145874
+Inception Score for batch 68: 1.0003085136413574
+Inception Score for batch 69: 1.0002964735031128
+Inception Score for batch 70: 1.0002950429916382
+Inception Score for batch 71: 1.000301718711853
+Inception Score for batch 72: 1.0003248453140259
+Inception Score for batch 73: 1.000293493270874
+Inception Score for batch 74: 1.0003174543380737
+Inception Score for batch 75: 1.0002764463424683
+Inception Score for batch 76: 1.0003076791763306
+Inception Score for batch 77: 1.0002721548080444
+Inception Score for batch 78: 1.0002896785736084
+Inception Score for batch 79: 1.0003106594085693
+Inception Score for batch 80: 1.0003042221069336
+Inception Score for batch 81: 1.000313401222229
+Inception Score for batch 82: 1.0002992153167725
+Inception Score for batch 83: 1.0003174543380737
+Inception Score for batch 84: 1.0002937316894531
+Inception Score for batch 85: 1.0002926588058472
+Inception Score for batch 86: 1.0003057718276978
+Inception Score for batch 87: 1.0002992153167725
+Inception Score for batch 88: 1.0003222227096558
+Inception Score for batch 89: 1.000279426574707
+Inception Score for batch 90: 1.0002814531326294
+Inception Score for batch 91: 1.0002952814102173
+Inception Score for batch 92: 1.0002914667129517
+Inception Score for batch 93: 1.0003026723861694
+Inception Score for batch 94: 1.000299096107483
+Inception Score for batch 95: 1.0002981424331665
+Inception Score for batch 96: 1.000299096107483
+Inception Score for batch 97: 1.0003077983856201
+Inception Score for batch 98: 1.0002882480621338
+Inception Score for batch 99: 1.0003100633621216
+Inception Score for batch 100: 1.0002952814102173
+Inception Score for batch 101: 1.0002942085266113
+Inception Score for batch 102: 1.0003025531768799
+Inception Score for batch 103: 1.0003281831741333
+Inception Score for batch 104: 1.0003036260604858
+Inception Score for batch 105: 1.0002864599227905
+Inception Score for batch 106: 1.000301480293274
+Inception Score for batch 107: 1.0003228187561035
+Inception Score for batch 108: 1.0002632141113281
+Inception Score for batch 109: 1.000321865081787
+Inception Score for batch 110: 1.0002914667129517
+Inception Score for batch 111: 1.0003055334091187
+Inception Score for batch 112: 1.000312089920044
+Inception Score for batch 113: 1.0003125667572021
+Inception Score for batch 114: 1.000319242477417
+Inception Score for batch 115: 1.0003083944320679
+Inception Score for batch 116: 1.0002886056900024
+Inception Score for batch 117: 1.0003000497817993
+Inception Score for batch 118: 1.000299334526062
+Inception Score for batch 119: 1.0002950429916382
+Inception Score for batch 120: 1.000315546989441
+Inception Score for batch 121: 1.0002846717834473
+Average Inception Score: 1.0003028844223647
+Using device: cuda:3
+Inception Score for batch 0: 1.0008459091186523
+Inception Score for batch 1: 1.0008563995361328
+Inception Score for batch 2: 1.0008985996246338
+Inception Score for batch 3: 1.000945806503296
+Inception Score for batch 4: 1.0007988214492798
+Inception Score for batch 5: 1.000819444656372
+Inception Score for batch 6: 1.000770926475525
+Inception Score for batch 7: 1.0008337497711182
+Inception Score for batch 8: 1.0008273124694824
+Inception Score for batch 9: 1.0008543729782104
+Inception Score for batch 10: 1.0008068084716797
+Inception Score for batch 11: 1.00083327293396
+Inception Score for batch 12: 1.0008260011672974
+Inception Score for batch 13: 1.0008046627044678
+Inception Score for batch 14: 1.0008840560913086
+Inception Score for batch 15: 1.0008506774902344
+Inception Score for batch 16: 1.0008199214935303
+Inception Score for batch 17: 1.000879168510437
+Inception Score for batch 18: 1.0008232593536377
+Inception Score for batch 19: 1.0008469820022583
+Inception Score for batch 20: 1.0008189678192139
+Inception Score for batch 21: 1.000832438468933
+Inception Score for batch 22: 1.0008537769317627
+Inception Score for batch 23: 1.0007766485214233
+Average Inception Score: 1.0008378326892853
+Using device: cuda:3
+Traceback (most recent call last):
+  File "inception.py", line 9, in <module>
+    fake_data_norm = pickle.load(fb)
+NameError: name 'pickle' is not defined
+Using device: cuda:3
+Inception Score for batch 0: 1.000172734260559
+Inception Score for batch 1: 1.0001732110977173
+Average Inception Score: 1.0001729726791382
+Using device: cuda:3
+FID score: 0.0024597168954163117
+Using device: cuda:3
+FID score: 0.0012538051513335902
+Using device: cuda:3
+FID score: 0.011635615781573377

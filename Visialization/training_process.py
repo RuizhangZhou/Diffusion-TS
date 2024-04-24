@@ -25,7 +25,7 @@ for value, iteration in loss_values:
 
 # 绘制损失曲线
 plt.figure(figsize=(10, 5))
-plt.plot(unique_loss_values, marker='o', linestyle='-', color='b', linewidth=0.25)  # 设置更细的线条
+plt.plot(unique_loss_values, linestyle='-', color='b', linewidth=2.5)  # 设置更细的线条
 plt.title('Training Loss Per Iteration')
 plt.xlabel('Iteration Number')
 plt.ylabel('Loss')

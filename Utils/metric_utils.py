@@ -103,6 +103,7 @@ def visualization(ori_data, generated_data, analysis, compare=3000):
 
     # Visualization parameter
     colors = ["red" for i in range(anal_sample_no)] + ["blue" for i in range(anal_sample_no)]
+  
 
     if analysis == 'pca':
         # PCA Analysis
@@ -120,8 +121,9 @@ def visualization(ori_data, generated_data, analysis, compare=3000):
 
         ax.legend()
         plt.title('PCA plot')
-        plt.xlabel('x-pca')
-        plt.ylabel('y_pca')
+        plt.xlabel('x-pca', fontsize=20)
+        plt.ylabel('y_pca', fontsize=20)
+        ax.tick_params(axis='both', which='major', labelsize=20)
         plt.show()
 
     elif analysis == 'tsne':
@@ -144,8 +146,9 @@ def visualization(ori_data, generated_data, analysis, compare=3000):
         ax.legend()
 
         plt.title('t-SNE plot')
-        plt.xlabel('x-tsne')
-        plt.ylabel('y_tsne')
+        plt.xlabel('x-tsne', fontsize=20)
+        plt.ylabel('y_tsne', fontsize=20)
+        ax.tick_params(axis='both', which='major', labelsize=20)
         plt.show()
 
     elif analysis == 'kernel':
@@ -160,12 +163,14 @@ def visualization(ori_data, generated_data, analysis, compare=3000):
 
         # plt.legend(prop={'size': 22})
         plt.legend()
-        plt.xlabel('Data Value')
-        plt.ylabel('Data Density Estimate')
+        plt.xlabel('Data Value', fontsize=20)
+        plt.ylabel('Data Density Estimate', fontsize=20)
+        ax.tick_params(axis='both', which='major', labelsize=20)
         # plt.rcParams['pdf.fonttype'] = 42
 
         # plt.savefig(str(args.save_dir)+"/"+args.model1+"_histo.png", dpi=100,bbox_inches='tight')
         # plt.ylim((0, 12))
+        plt.xlim(0, 1)  # 设定y轴从0开始，上限自动
         plt.show()
         plt.close()
 
