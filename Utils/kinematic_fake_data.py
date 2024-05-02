@@ -4,22 +4,39 @@ from sklearn.preprocessing import MinMaxScaler
 import os
 
 # 加载和准备数据
-file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_map00_interval1_seq500_nfea10_pad-300/ddpm_fake_rounD_map00_interval1_seq500_nfea10_pad-300.npy'
+file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_single_09-23_seq250/ddpm_fake_rounD_single_09-23_seq250.npy'
 fake_data_norm = np.load(file_path)
 
 # 假设原始数据路径和原始数据的处理
-df = pd.read_csv("/DATA1/rzhou/ika/multi_testcases/rounD/ori/seq500/00-01/rounD_map00_interval1_seq500_nfea10.csv", header=0)
+df = pd.read_csv("/DATA1/rzhou/ika/single_testcases/rounD/rounD_single_09-23_seq250.csv", header=0)
 data = df.values
 scaler = MinMaxScaler().fit(data[:, 1:])
 
-seq_length = 500
+seq_length = 250
 num_feature = df.shape[1] - 1
 # 将fake_data从归一化状态恢复到原始尺度
 fake_data = scaler.inverse_transform(fake_data_norm.reshape(-1, num_feature)).reshape(-1, seq_length, num_feature)
 
 # 设置极端值并替换
-extreme_value = -300
+#extreme_value = -300
 fake_data[fake_data < -200] = 0
+
+def calculate_euclidean_loss(df):
+    df['x_pred'] = df['x_dot_theory']
+    df['y_pred'] = df['y_dot_theory']
+    df['x_actual'] = df['xVelocity']
+    df['y_actual'] = df['yVelocity']
+    df['euclidean_loss'] = np.sqrt((df['x_pred'] - df['x_actual'])**2 + (df['y_pred'] - df['y_actual'])**2)
+    return df['euclidean_loss'].mean()
+
+def calculate_model_differences(df, delta_degrees=5):
+    theta_rad = np.radians(df['heading'])
+    v = np.sqrt(df['xVelocity']**2 + df['yVelocity']**2)
+    delta = np.radians(delta_degrees)
+    beta = np.arctan(np.tan(delta) * 0.5)
+    df['x_dot_theory'] = v * np.cos(theta_rad + beta)
+    df['y_dot_theory'] = v * np.sin(theta_rad + beta)
+    return df
 
 # 处理每个测试用例
 delta_time = 0.04  # 假设的每帧间隔时间，单位秒
@@ -41,7 +58,7 @@ def calculate_velocity_and_heading(data):
     return velocities, headings
 
 def find_first_and_last_non_zero(x_column, y_column):
-    non_zero_mask = (x_column != extreme_value) & (y_column != extreme_value)
+    non_zero_mask = (x_column != 0) & (y_column != 0)
     if not np.any(non_zero_mask):
         return None, None
     initial_frame = np.argmax(non_zero_mask)
@@ -50,9 +67,10 @@ def find_first_and_last_non_zero(x_column, y_column):
 
 total_loss = 0
 num_cases = 0
-
+print(fake_data.shape[0])
 # 计算每个测试用例的损失
 for case_index in range(fake_data.shape[0]):
+    #print(case_index)
     case_data = fake_data[case_index]
     velocities, headings = calculate_velocity_and_heading(case_data[:, :2])
     
