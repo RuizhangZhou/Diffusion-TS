@@ -4,11 +4,11 @@ from sklearn.preprocessing import MinMaxScaler
 import os
 
 # 加载和准备数据
-file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/exiD_map00-18_interval10_seq500_nfea10_pad-1000/ddpm_fake_exiD_map00-18_interval10_seq500_nfea10_pad-1000.npy'
+file_path = '/home/rzhou/Projects/Diffusion-TS/OUTPUT/inD_map18-29_interval1_seq500_nfea10_pad-300/ddpm_fake_inD_map18-29_interval1_seq500_nfea10_pad-300.npy'
 fake_data_norm = np.load(file_path)
 
 # 假设原始数据路径和原始数据的处理
-df = pd.read_csv("/DATA1/rzhou/ika/multi_testcases/exiD/exiD_map00-18_interval10_seq500_nfea10.csv", header=0)
+df = pd.read_csv("/DATA1/rzhou/ika/multi_testcases/inD/inD_map18-29_interval1_seq500_nfea10.csv", header=0)
 data = df.values
 # 定义一个极端的填充值
 extreme_value = -300
@@ -22,7 +22,6 @@ num_feature = df.shape[1] - 1
 fake_data = scaler.inverse_transform(fake_data_norm.reshape(-1, num_feature)).reshape(-1, seq_length, num_feature)
 
 # 设置极端值并替换
-#extreme_value = -300
 fake_data[fake_data < -200] = 0
 # 将所有绝对值小于5的元素设置为0
 # fake_data[np.abs(fake_data) < 5] = 0
