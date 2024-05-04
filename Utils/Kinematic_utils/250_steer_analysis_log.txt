@@ -1,0 +1,12 @@
+Results for /home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_multi_09-23_interval250_numfea10_nopad/ddpm_fake_rounD_multi_09-23_interval250_numfea10_nopad.npy with /DATA1/rzhou/ika/multi_testcases/rounD/ori/nopad/rounD_multi_09-23_interval250_numfea10_nopad.csv:
+Mean absolute steering angle: 79.7393234374151 degrees
+
+Results for /home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_multi_09-23_interval250_numfea10_nopad/samples/rounD_multi_09-23_interval250_numfea10_nopad_norm_truth_250_train.npy with /DATA1/rzhou/ika/multi_testcases/rounD/ori/nopad/rounD_multi_09-23_interval250_numfea10_nopad.csv:
+Mean absolute steering angle: 72.54673910562207 degrees
+
+Results for /home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_single_09-23_seq250/ddpm_fake_rounD_single_09-23_seq250.npy with /DATA1/rzhou/ika/single_testcases/rounD/rounD_single_09-23_seq250.csv:
+Mean absolute steering angle: 75.20444089518647 degrees
+
+Results for /home/rzhou/Projects/Diffusion-TS/OUTPUT/rounD_single_09-23_seq250/samples/rounD_single_09-23_seq250_norm_truth_250_train.npy with /DATA1/rzhou/ika/single_testcases/rounD/rounD_single_09-23_seq250.csv:
+Mean absolute steering angle: 68.66954400678891 degrees
+
